@@ -22,5 +22,6 @@
 
   <modules>
     <module>ldap-server</module>
+    <module>hello-service</module>
   </modules>
 </project>

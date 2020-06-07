@@ -9,12 +9,20 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>com.example</groupId>
-  <artifactId>ldap-server</artifactId>
+  <artifactId>hello-service</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>ldap-server</name>
-  <description>Test Ldap Server</description>
+  <name>hello-service</name>
+  <description>Hello world Service</description>
 
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-ldap</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
@@ -34,11 +42,8 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>com.unboundid</groupId>
-      <artifactId>unboundid-ldapsdk</artifactId>
-    </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
