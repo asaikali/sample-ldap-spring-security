@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost:9096/mem:testdb
+    username: sa
+    password:
+  session:
+    store-type: jdbc
+    jdbc:
+      table-name: "spring_session"
+      initialize-schema: embedded
+
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
