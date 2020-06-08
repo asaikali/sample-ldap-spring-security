@@ -1,0 +1,10 @@
+spring:
+  ldap:
+    urls: "ldap://Your Ip Address Here:389/"
+
+demo:
+  ActiveDirectory:
+    domain: "almirex.dc"
+    searchFilter: "(&(objectClass=user)(userPrincipalName={0})(memberof=CN=storeServices,CN=Users,DC=almirex,DC=dc))"
+
+

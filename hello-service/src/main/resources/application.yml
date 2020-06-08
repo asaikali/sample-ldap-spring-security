@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 9999
 
 spring:
   datasource:
@@ -8,11 +8,9 @@ spring:
     password:
   session:
     store-type: jdbc
-    jdbc:
-      table-name: "spring_session"
-      initialize-schema: embedded
-
-
+  ldap:
+    # url below is used by the boot actuator for the ldap server health check indicator
+    urls: "ldap://localhost:8389/dc=springframework,dc=org"
 management:
   endpoint:
     health:
@@ -21,3 +19,4 @@ management:
     web:
       exposure:
         include: "*"
+
