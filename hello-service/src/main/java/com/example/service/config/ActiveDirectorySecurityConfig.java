@@ -1,4 +1,4 @@
-package com.example;
+package com.example.service.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,9 +21,21 @@ public class ActiveDirectorySecurityConfig extends WebSecurityConfigurerAdapter 
   protected void configure(HttpSecurity http) throws Exception {
     http
         .authorizeRequests()
-        .anyRequest().fullyAuthenticated()
-        .and()
-        .formLogin();
+        .anyRequest().fullyAuthenticated();
+
+    // configure what happens when an api or web browser make unauthenticated request
+    http.exceptionHandling().authenticationEntryPoint(new AppAuthenticationEntryPoint());
+
+    // configure login from
+    http.formLogin()
+        .defaultSuccessUrl("/time")
+        .loginPage("/login")
+        .loginProcessingUrl("/login")
+        .successHandler(new AppLoginSuccessHandler())
+        .failureHandler(new AppLoginFailureHandler())
+        .permitAll();
+
+    http.csrf().disable();
   }
 
   @Value("${spring.ldap.urls}")

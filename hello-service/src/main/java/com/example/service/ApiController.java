@@ -1,4 +1,4 @@
-package com.example;
+package com.example.service;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -11,11 +11,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class AppController {
+class ApiController {
 
-  @GetMapping("/")
-  String  get() {
-    return "Hello the time is  " + LocalDateTime.now();
+
+  @GetMapping("/time")
+  String  time(HttpSession httpSession) {
+    // this is not thread safe
+    Integer counter = (Integer) httpSession.getAttribute("counter");
+    if(counter == null) {
+      counter = 1;
+    } else {
+      counter += 1;
+    }
+    httpSession.setAttribute("counter", counter);
+
+  return "Hello session " + httpSession.getId() +
+         "\ncounter is " + counter +  "\ncurrent time is " + LocalDateTime.now();
   }
 
   @GetMapping("/user")

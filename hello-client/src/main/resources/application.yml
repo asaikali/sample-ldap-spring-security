@@ -1,0 +1,5 @@
+helloService:
+  url: "http://localhost:9999"
+  loginUrl: "http://localhost:9999/login"
+  username: ben
+  password: benspassword
