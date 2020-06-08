@@ -1,7 +1,7 @@
 
 spring:
   ldap:
-    urls: "ldap://35.222.32.157:389/"
+    urls: "ldap://Your IP goes here:389/"
 
 demo:
   ActiveDirectory:
